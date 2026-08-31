@@ -27,4 +27,6 @@ Presentación en formato PDF sobre Sistemas Expertos, que aborda los temas de Co
   https://www.overleaf.com/3861955375tqngtqtvyhbk#d4027f
 
 8. resultado del punto 7 en Mark Down
- Documento en formato texto con las conclusiones finales, reflexiones del curso y notas de integración sobre el estado del arte de la IA.
+Crea, lee y entrega un resumen cada uno de los pdf (de la carpeta: ia\sistemasExpertos\pdf de DropBox) (usa NoteBookLM para esta actividad): 
+   1. '0-ingenieria-del-conocimiento.pdf'.
+   2. 'C-sistemasExpertosBasadosEnReglas.pdf'
