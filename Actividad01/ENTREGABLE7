@@ -2,50 +2,146 @@
 Estudiante: Alan Daniel Matuz Enríquez
 Matrícula: 201482
 Materia: PROGRAMACION AVANZADA
-Institución: Universidad Autónoma del Carmen (UNACAR)
 
 
-1. Síntesis General de Aprendizajes
+Fundamentos de la Ingeniería del Conocimiento y Sistemas Expertos Basados en Reglas (SBR)
 
-A lo largo del desarrollo de esta unidad de trabajo, se abordó la inteligencia desde dos perspectivas 
-complementarias: la biológica y la computacional.
+1. Introducción y Marco Conceptual de la Ingeniería del Conocimiento (IC)
 
-En el plano histórico y computacional:
-La película El código enigma expone el momento exacto en que el cálculo humano resulta 
-insuficiente y surge la necesidad del procesamiento automatizado propuesto por Alan Turing, sentando 
-las bases del concepto de que solo una máquina puede procesar la complejidad de otra máquina. Por su parte, El piso 13
-plantea las consecuencias ontológicas de la emergencia de agentes artificiales autónomos y realidades simuladas
-bajo el principio cartesiano de la autoconciencia.
+La Ingeniería del Conocimiento (IC) se consolida como una rama especializada de la Inteligencia Artificial destinada al modelado y resolución de problemas en dominios de alta complejidad. Su importancia estratégica reside en su capacidad para operar en entornos donde el conocimiento es intrínsecamente inconsistente, incompleto o impreciso, condiciones que inhabilitan la computación algorítmica convencional. Mediante la IC, la experiencia humana —a menudo tácita y desestructurada— se somete a un proceso de formalización para transformarse en activos computacionales, permitiendo que el razonamiento experto sea preservado, analizado y ejecutado de manera sistemática por sistemas de software avanzados.
 
-En el plano biológico y evolutivo:
+1.1. Ontología del Conocimiento en IA (Vázquez, 2009)
 
-La obra El mono desnudo de Desmond Morris y los análisis neurobiológicos de los programas de divulgación 
-Así decide el cerebro y El cerebro nos engaña demuestran que la inteligencia natural no fue diseñada
-como un registro estático o una cámara fotográfica, sino como una herramienta adaptativa para la supervivencia. 
-El cerebro humano opera mediante filtrado, ahorro energético, inferencia inconsciente y plasticidad sináptica para interactuar con un entorno dinámico.
+En el paradigma de la IA, el conocimiento trasciende la mera acumulación de datos. Según Vázquez (2009), este debe entenderse como la amalgama sinérgica entre estructuras de datos y procedimientos interpretativos. Esta integración permite una representación fidedigna de la realidad a través de hechos, conceptos y asociaciones que dotan al sistema de una capacidad operativa inteligente para modelar el mundo real.
 
-En el plano de la Inteligencia Artificial aplicada:
-El estudio de los sistemas expertos demostró la transición de la IA teórica hacia la resolución
-de problemas reales mediante bases de conocimiento y motores de inferencia (hacia adelante y hacia atrás). 
-Sin embargo, las limitaciones de estos sistemas deterministas impulsaron la evolución hacia el conexionismo,
-el aprendizaje automático (Machine Learning) y el aprendizaje profundo (Deep Learning).
+1.2. Taxonomía del Conocimiento
 
+Para una estructuración técnica rigurosa, se establece la siguiente jerarquía:
 
-2. Integración con el Artículo Científico
+ Conocimiento Declarativo: Comprende los hechos y atributos que describen objetos, conceptos o entidades, junto con las relaciones estáticas existentes entre ellos.
+ Conocimiento Procedimental: Define el conjunto de reglas y metodologías que dictan cómo utilizar el conocimiento para resolver problemas y generar nuevas inferencias.
+ Metaconocimiento: Conocimiento de alto nivel sobre la propia operación del sistema. Supervisa las capacidades de razonamiento y establece los límites del dominio operativo.
 
-El artículo académico elaborado en formato Springer LLNCS conecta estos fundamentos históricos y biológicos con 
-una visión de futuro. El estado del arte de la IA ha superado la fase simbólica para dominar el procesamiento de grandes 
-volúmenes de datos mediante redes neuronales profundas.
-La aportación original del trabajo propone no limitar las redes artificiales a procesadores aislados, sino integrarlas 
-como Redes Bioartificiales capaces de interactuar mediante interfaces cerebro-computadora 
-para reparar, puentear o emular funciones neuronales perdidas en personas con enfermedades neurodegenerativas o daño motor.
+1.3. Arquitectura de Roles en el Ciclo de Vida
 
+El desarrollo de un Sistema Basado en el Conocimiento (SBC) requiere una tríada de roles especializados:
 
-3. Conclusiones Finales
+1. Ingeniero del Conocimiento (ICO): Especialista encargado de la extracción, formalización y validación del conocimiento. Su labor es crítica, pues debe poseer habilidades en comunicación y fundamentos de psicología para decodificar las heurísticas del experto.
+2. Experto Humano: Poseedor de la trayectoria y experiencia en el dominio, cuyo prestigio garantiza la calidad de la base de conocimiento.
+3. Usuario Final: Destinatario de la herramienta, cuya perspectiva técnica debe integrarse desde el diseño para asegurar la aplicabilidad del sistema.
 
-La Inteligencia Artificial no es una disciplina aislada de la naturaleza humana; su propia arquitectura conexionista surge como una 
-emulación matemática de los principios de organización y plasticidad sináptica del cerebro biológico.
-Comprender los orígenes de la computación y la evolución zoológica del ser humano permite 
-dimensionar los retos éticos, la explicabilidad de los modelos y la responsabilidad en el diseño de tecnologías
-que impactan directamente a la sociedad.
-El verdadero valor del estado del arte de la IA radica en su capacidad de trascender el análisis de datos para convertirse en una herramienta que restablezca capacidades y mejore directamente la calidad de vida de las personas.
+1.4. Delimitación de la Disciplina
+
+De acuerdo con Rodríguez (2002), la IC se bifurca en dos dimensiones: la perspectiva estricta, que se limita a los procesos operativos de adquisición, representación, validación y mantenimiento; y la perspectiva amplia, que abarca el ciclo completo de desarrollo de sistemas de IA complejos.
+
+Esta fundamentación teórica constituye el cimiento necesario para transitar hacia la ejecución de procesos operativos sistemáticos en la fase de adquisición.
+
+2. Procesos Metodológicos en la Ingeniería del Conocimiento
+
+La adquisición y representación del conocimiento constituyen los pilares de la transferencia tecnológica desde la mente del experto hacia el sistema. La implementación de una metodología estructurada es el único mecanismo capaz de mitigar el riesgo de generar sistemas expertos inadecuados, garantizando que el conocimiento sea capturado con precisión y fidelidad lógica.
+
+2.1. Adquisición del Conocimiento (AC): Dinámica y Fuentes
+
+La AC se define como la labor de extracción de las fuentes, clasificadas según su volatilidad:
+
+ Fuentes Estáticas (Secundarias): Conocimiento tangible y no variable, como manuales técnicos, libros y artículos, que proporcionan la base doctrinal del dominio.
+ Fuentes Dinámicas (Primarias): Información cambiante e inexacta basada en la experiencia directa del experto humano, caracterizada por su naturaleza heurística y evolutiva.
+
+2.2. El Ciclo Sistémico de la AC (Vázquez, 2009)
+
+El proceso se despliega en cinco fases iterativas diseñadas para asegurar la calidad de la transferencia:
+
+1. Identificación: Delimitación del problema, identificación de participantes y recursos, y descomposición en subproblemas manejables.
+2. Entendimiento: Determinación de conceptos clave y estrategias de extracción, evaluando si el modelo de reglas es el adecuado para el dominio.
+3. Formalización: Organización de las piezas de conocimiento en la Base de Conocimiento (BC), seleccionando las herramientas de soporte técnico necesarias.
+4. Implementación: Codificación del conocimiento en un prototipo operativo mediante lenguajes de representación específicos.
+5. Pruebas: Fase de validación donde el experto humano examina la coherencia de las inferencias producidas mediante casos de estudio.
+
+2.3. Análisis Comparativo de Técnicas de Adquisición
+
+Categoría	Técnica	Descripción Técnica
+Manuales	Entrevistas	Diálogos (estructurados, semiestructurados o no estructurados) para capturar heurísticas mediante comunicación organizada.
+Manuales	Métodos de Búsqueda	Análisis de protocolos y observación para rastrear la "trayectoria del pensamiento" del experto.
+Semiautomatizados	Teoría de Kelly	Uso del Repertory Grid Analysis (Análisis de Rejilla) para estructurar razonamientos difícilmente expresables verbalmente.
+Automatizados	Inducción (ID3)	Empleo del algoritmo ID3 de Quinlan para transformar matrices de atributos en árboles de decisión y reglas.
+Automatizados	Aprendizaje Heurístico	Programas que optimizan su base de datos mediante la experiencia acumulada en la resolución de problemas.
+
+2.4. Esquemas de Representación del Conocimiento (KR)
+
+Para garantizar la integridad del sistema, un esquema KR debe cumplir con cinco pilares: Sencillez (manipulación ágil), Modificabilidad (incorporación sinérgica de datos), Transparencia (detección de inconsistencias), Independencia (reutilización de sentencias) y capacidad Relacional.
+
+ Lógica Simbólica: Incluye la Lógica Proposicional (evaluación booleana de hechos) y la Lógica de Predicados. En esta última, es imperativo distinguir que, mientras una función retorna un elemento del universo de discurso (objeto), un predicado retorna un valor de verdad (cierto/falso) tras evaluar la relación entre términos.*
+ Estructuras Relacionales y Jerárquicas: Las Redes Semánticas (Quillian, 1968) utilizan nodos y enlaces (ES-UN, ES-SUBCONJUNTO); los Gráficos Conceptuales modelan causalidad, y los Árboles de Decisión representan espacios de búsqueda jerarquizados.
+ Marcos (Frames) y Slots (Vázquez, 2009): Estructuras para representar objetos subdivididas en slots (atributos) y facets (facetas que proporcionan una definición más precisa). Operan bajo una herencia jerarquizada y poseen tres estados: Activo (en proceso de confirmación), Semiactivo (hipótesis sugerida) e Inactivo (eliminado de la consideración actual).
+
+2.5. Clasificación Funcional de Esquemas
+
+Los esquemas se categorizan en Declarativos, orientados a la acumulación de hechos estáticos, y Procedimentales, que enfatizan reglas dinámicas para el uso operativo del conocimiento. Esta formalización precisa es el requisito previo para que el conocimiento sea ejecutado operativamente dentro de un motor de inferencia.
+
+3. Arquitectura y Operativa de los Sistemas Expertos Basados en Reglas (SBR)
+
+Los SBR constituyen herramientas estratégicas para la resolución de situaciones complejas regidas por reglas deterministas. Su potencia operativa emana de la separación entre el dominio del conocimiento y el motor de inferencia, encargado de aplicar la lógica clásica para derivar conclusiones a partir de evidencias.
+
+3.1. Componentes Estructurales del SBR
+
+Componente	Definición Técnica	Naturaleza	Persistencia
+Base de Conocimiento	Conjunto de reglas que gobiernan el dominio.	Estática	Permanente
+Memoria de Trabajo	Hechos conocidos en una situación particular.	Dinámica	Temporal
+
+3.2. Anatomía y Sintaxis de la Regla de Producción
+
+La regla es una unidad lógica "Si Antecedente, entonces Consecuente". El Antecedente (premisa) puede ser una expresión simple (un hecho objeto-valor) o compuesta (múltiples hechos vinculados por operadores AND, OR, NOT). El Consecuente (conclusión) representa el nuevo hecho derivado.
+
+3.3. El Ciclo de Operación del Motor de Inferencia
+
+El motor de inferencia ejecuta un proceso recursivo de tres etapas:
+
+1. Reconocimiento de patrones: Coteja hechos de la memoria de trabajo con las premisas de las reglas.
+2. Resolución de conflictos: Selecciona la regla más pertinente de la agenda según la estrategia de control.
+3. Ejecución: Aplica la conclusión, actualizando la memoria de trabajo con nuevos hechos.
+
+3.4. Lógica de Inferencia para Conclusiones Simples
+
+Regla	Mecanismo Lógico	Dirección
+Modus Ponens	Si A \rightarrow B y A es cierto, entonces B es cierto.	Hacia adelante (Premisa a Conclusión)
+Modus Tollens	Si A \rightarrow B y B es falso, entonces A es falso.	Hacia atrás (Conclusión a Premisa)
+
+El Modus Tollens es fundamental para la expansión de la capacidad deductiva. Operativamente, aplicar Modus Tollens a la regla "Si A entonces B" es equivalente a ejecutar un Modus Ponens sobre la regla invertida "Si no B entonces no A". Este "giro" permite inferir la falsedad de premisas a partir de la ausencia de sus consecuencias, ampliando el espacio de búsqueda del sistema.
+
+3.5. Estrategias de Control y Encadenamiento
+
+ Encadenamiento Hacia Adelante (Forward Chaining): Proceso guiado por datos. Parte de los hechos iniciales y activa reglas de forma recursiva hasta alcanzar todas las conclusiones lógicamente derivables.
+ Encadenamiento Hacia Atrás (Backward Chaining): Proceso guiado por objetivos. Selecciona una variable meta y navega retroactivamente. Si un dato es desconocido, el algoritmo marca nodos y fuerza una consulta al usuario para validar las premisas necesarias.
+
+3.6. Compilación de Reglas
+
+Cuando los datos y objetivos son predecibles, las reglas pueden compilarse en ecuaciones objetivo. Este proceso optimiza la respuesta al aplanar la jerarquía de inferencia. Por ejemplo, si disponemos de las Reglas 1 a 6 que vinculan hechos (A..I) con metas intermedias (C, G, J, K, L) y finales (M), la compilación genera:
+
+ Regla 4a: Si A \land B \land D \land E \land F, entonces K.
+ Regla 5a: Si D \land E \land F \land H \land I, entonces L.
+ Regla 6a: Si A \land B \land D \land E \land F \land H \land I, entonces M. Esta transformación permite una inferencia directa desde los datos de entrada, eliminando pasos intermedios y garantizando una respuesta instantánea.
+
+Esta optimización requiere mecanismos de control de coherencia rigurosos para asegurar que las inferencias producidas no diverjan de la realidad lógica del dominio.
+
+4. Control de Coherencia, Justificación y Aplicaciones Formales
+
+La consistencia lógica es el parámetro determinante de la fiabilidad en un sistema experto. La coexistencia de información contradictoria degrada la integridad del razonamiento, conduciendo inevitablemente a conclusiones absurdas que invalidan la utilidad industrial del sistema.
+
+4.1. Coherencia de la Base de Conocimiento (Reglas)
+
+Un conjunto de reglas es coherente si permite al menos una configuración de valores no contradictoria. El sistema debe ejecutar procesos de detección de valores no factibles, definidos como aquellos que contradicen cualquier combinación de valores del resto de objetos del dominio. Estos valores deben ser eliminados automáticamente para asegurar que el motor de inferencia opere sobre una base lógicamente viable.
+
+4.2. Coherencia de la Memoria de Trabajo (Hechos)
+
+El sistema valida las evidencias suministradas contra el conjunto de reglas. La actualización continua e inmediata tras cada entrada de información es vital; de lo contrario, podrían coexistir hechos contradictorios (ej. Pago=Autorizado y NIP=Incorrecto) que viciarían el árbol de decisión.
+
+4.3. Subsistema de Explicación y Justificación
+
+La robustez de los SBR se manifiesta en su capacidad de generar confianza mediante la trazabilidad. El subsistema de explicación permite al usuario visualizar la cadena de reglas activas que sustentan una conclusión o comprender por qué se solicita un dato específico, aportando transparencia al proceso de toma de decisiones.
+
+4.4. Validación Mediante Casos de Estudio Reales
+
+ Control Ferroviario: La gestión de señales (U, L) y tramos de vía (S) mediante reglas deterministas garantiza la seguridad operativa. Si el sensor detecta S=ocupado, el sistema infiere automáticamente U=parada y L=parada, impidiendo colisiones mediante una formalización atómica de las condiciones de seguridad.
+ Resolución de Problemas Lógicos (Agentes Secretos): Ante telegramas contradictorios de Alberto, Luisa, Carmen y Tomás, el sistema aplica la Hipótesis del Mundo Cerrado. Al identificar a Tomás como el agente que miente, el sistema puede procesar el telegrama de Luisa ("Alberto está en Francia") como una verdad absoluta. Si Luisa dice la verdad desde España, el hecho "Alberto = Francia" se asienta en la memoria de trabajo. Mediante la consistencia de dominio, el sistema resuelve la ubicación de los cuatro agentes, demostrando que la lógica de predicados puede discernir la verdad incluso en entornos de desinformación.
+
+La Ingeniería del Conocimiento, al proporcionar estructuras de formalización atómica y mecanismos de control de coherencia, confiere una robustez indispensable al desarrollo de software científico e industrial contemporáneo.
