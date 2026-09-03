@@ -1,0 +1,32 @@
+# Actividad: Árboles de decisión y Naive Bayes
+
+-Matuz Enriquez Alan Daniel 201482
+
+-Gerardo Gomez Perez 200191
+
+## Entregables
+
+1. Aplicación de ID3 al conjunto Iris
+   - Archivo: ID3_Iris.pdf
+
+2. Aplicación de J48 en Weka
+   - Archivo: Reporte_J48_Weka.pdf
+
+3. Cuaderno Colab 
+de ALAN MATUZ
+   - [Abrir cuaderno en Google Colab](https://colab.research.google.com/drive/1fzTmknrNt7TvNgnh_FW7PMHiFKpg0WRW?usp=sharing)
+
+4. Aplicación de Naive Bayes en R al conjunto Iris
+   - naiveBayesIris.Rmd
+   - naiveBayesIris.html
+
+5. Matriz de confusión de 20 observaciones
+   - naive-bayes.iris.data_completado.xlsx
+
+6. Actividad Naive Bayes FCI
+   - actividadNBFCI.Rmd
+   - actividadNBFCI.html
+
+7. Cuaderno Colab
+De gerardo gomez
+   - [Abrir cuaderno](https://colab.research.google.com/drive/1O0tCmI7IbNGqDFz03aVfvTSK5st8dJEi#scrollTo=9MZqSk6fO7cv)
