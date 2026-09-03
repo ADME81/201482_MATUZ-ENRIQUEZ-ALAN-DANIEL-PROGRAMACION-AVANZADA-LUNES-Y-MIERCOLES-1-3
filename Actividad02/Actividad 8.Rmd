@@ -1,0 +1,282 @@
+---
+title: "Aplicación de Naive Bayes al rendimiento de estudiantes FCI"
+author: "Gerardo y Alan"
+date: "2026-09-03"
+output: html_document
+---
+
+# Introducción
+
+
+En esta actividad se utilizará Naive Bayes para predecir el rendimiento académico de estudiantes de la Facultad de Ciencias de la Información (FCI), utilizando como características el tiempo de estudio, asistencia, participación y situación económica.
+
+La variable que se desea predecir es el Rendimiento académico.
+
+# Variables utilizadas
+
+Las variables utilizadas son:
+
+- TiempoEstudio
+- Asistencia
+- Participacion
+- SituacionEcon
+- Rendimiento
+
+La variable `Rendimiento` corresponde a la clase que será predicha por el algoritmo.
+
+# Creación del conjunto de datos
+
+Se creó un conjunto de datos con 30 estudiantes.
+
+```{r}
+estudiantes <- data.frame(
+
+  Estudiante = 1:30,
+
+  TiempoEstudio = c(
+    "Alto","Medio","Bajo","Alto","Medio",
+    "Alto","Bajo","Medio","Alto","Bajo",
+    "Medio","Alto","Bajo","Medio","Alto",
+    "Bajo","Medio","Alto","Medio","Bajo",
+    "Alto","Medio","Bajo","Alto","Medio",
+    "Bajo","Alto","Medio","Alto","Bajo"
+  ),
+
+  Asistencia = c(
+    "Alta","Media","Baja","Alta","Media",
+    "Alta","Baja","Alta","Alta","Baja",
+    "Media","Alta","Media","Alta","Alta",
+    "Baja","Media","Alta","Media","Baja",
+    "Alta","Media","Baja","Alta","Media",
+    "Baja","Alta","Alta","Media","Baja"
+  ),
+
+  Participacion = c(
+    "Alta","Media","Baja","Media","Media",
+    "Alta","Baja","Media","Alta","Baja",
+    "Media","Alta","Baja","Media","Alta",
+    "Baja","Media","Alta","Media","Baja",
+    "Alta","Media","Baja","Alta","Media",
+    "Baja","Alta","Media","Alta","Baja"
+  ),
+
+  SituacionEcon = c(
+    "Buena","Buena","Mala","Buena","Buena",
+    "Buena","Mala","Buena","Buena","Mala",
+    "Mala","Buena","Mala","Buena","Buena",
+    "Mala","Buena","Buena","Mala","Mala",
+    "Buena","Buena","Mala","Buena","Mala",
+    "Mala","Buena","Buena","Buena","Mala"
+  ),
+
+  Rendimiento = c(
+    "Excelente","Bueno","Deficiente","Bueno","Bueno",
+    "Excelente","Deficiente","Bueno","Excelente","Deficiente",
+    "Regular","Excelente","Deficiente","Bueno","Excelente",
+    "Deficiente","Regular","Excelente","Regular","Deficiente",
+    "Excelente","Bueno","Deficiente","Excelente","Regular",
+    "Deficiente","Excelente","Bueno","Bueno","Deficiente"
+  )
+)
+
+estudiantes
+```
+
+# Conversión de variables a factores
+
+Para trabajar con Naive Bayes, las variables categóricas se convierten en factores.
+
+```{r}
+estudiantes$TiempoEstudio <- factor(estudiantes$TiempoEstudio)
+
+estudiantes$Asistencia <- factor(estudiantes$Asistencia)
+
+estudiantes$Participacion <- factor(estudiantes$Participacion)
+
+estudiantes$SituacionEcon <- factor(estudiantes$SituacionEcon)
+
+estudiantes$Rendimiento <- factor(estudiantes$Rendimiento)
+```
+
+Podemos observar la estructura del conjunto de datos:
+
+```{r}
+str(estudiantes)
+```
+
+# Distribución del rendimiento
+
+Podemos observar cuántos estudiantes pertenecen a cada categoría de rendimiento.
+
+```{r}
+table(estudiantes$Rendimiento)
+```
+
+# Carga de paquetes
+
+Se utilizarán los paquetes `e1071` y `caret`.
+
+```{r}
+library(e1071)
+library(caret)
+```
+
+# División del conjunto de datos
+
+Se utilizará el 80 % de las observaciones para entrenar el modelo y el 20 % restante para probarlo.
+
+Primero se establece una semilla para obtener resultados reproducibles.
+
+```{r}
+set.seed(123)
+
+indice <- createDataPartition(
+  estudiantes$Rendimiento,
+  p = 0.8,
+  list = FALSE
+)
+```
+
+Se crean los conjuntos de entrenamiento y prueba.
+
+```{r}
+entrenamiento <- estudiantes[indice, ]
+
+prueba <- estudiantes[-indice, ]
+```
+
+Podemos observar sus dimensiones:
+
+```{r}
+dim(entrenamiento)
+dim(prueba)
+```
+
+# Datos de entrenamiento
+
+```{r}
+entrenamiento
+```
+
+# Datos de prueba
+
+```{r}
+prueba
+```
+
+# Entrenamiento del modelo Naive Bayes
+
+El modelo utilizará las variables:
+
+- TiempoEstudio
+- Asistencia
+- Participacion
+- SituacionEcon
+
+para intentar predecir:
+
+- Rendimiento
+
+```{r}
+modelo <- naiveBayes(
+  Rendimiento ~ TiempoEstudio +
+                Asistencia +
+                Participacion +
+                SituacionEcon,
+  data = entrenamiento,
+  laplace = 1
+)
+
+modelo
+```
+
+El parámetro `laplace = 1` aplica suavizado de Laplace, lo cual ayuda a evitar probabilidades iguales a cero cuando alguna combinación no aparece en los datos de entrenamiento.
+
+# Predicción
+
+Ahora el modelo se utiliza para clasificar a los estudiantes del conjunto de prueba.
+
+```{r}
+prediccion <- predict(
+  modelo,
+  prueba
+)
+
+prediccion
+```
+
+# Comparación entre valores reales y predichos
+
+```{r}
+resultado <- data.frame(
+
+  Estudiante = prueba$Estudiante,
+
+  Real = prueba$Rendimiento,
+
+  Prediccion = prediccion
+)
+
+resultado
+```
+
+Esta tabla permite comparar directamente el rendimiento real de cada estudiante con el rendimiento predicho por Naive Bayes.
+
+# Matriz de confusión
+
+Para evaluar el clasificador se construye una matriz de confusión.
+
+```{r}
+matriz <- confusionMatrix(
+  prediccion,
+  prueba$Rendimiento
+)
+
+matriz
+```
+
+La diagonal principal representa las clasificaciones correctas.
+
+Los valores fuera de la diagonal representan errores de clasificación.
+
+# Exactitud
+
+Podemos obtener la exactitud del modelo con:
+
+```{r}
+matriz$overall["Accuracy"]
+```
+
+También puede mostrarse como porcentaje:
+
+```{r}
+matriz$overall["Accuracy"] * 100
+```
+
+# Probabilidades de clasificación
+
+También podemos obtener las probabilidades calculadas por Naive Bayes para cada estudiante del conjunto de prueba.
+
+```{r}
+probabilidades <- predict(
+  modelo,
+  prueba,
+  type = "raw"
+)
+
+probabilidades
+```
+
+Para cada estudiante, la clase con la probabilidad más alta corresponde al rendimiento seleccionado por el clasificador.
+
+# Conclusión
+
+En esta actividad se utilizó el algoritmo Naive Bayes para clasificar el rendimiento académico de estudiantes de la Facultad de Ciencias de la Información.
+
+Se emplearon como características el tiempo de estudio, la asistencia, la participación y la situación económica, mientras que el rendimiento académico fue utilizado como variable objetivo.
+
+El conjunto de datos fue dividido utilizando el 80 % de las observaciones para entrenar el modelo y el 20 % restante para probarlo.
+
+Posteriormente, las predicciones obtenidas fueron comparadas con los valores reales mediante una matriz de confusión. Esta matriz permite identificar tanto las clasificaciones correctas como los errores cometidos por el modelo.
+
+La actividad permite observar cómo Naive Bayes puede utilizar información categórica relacionada con los hábitos y condiciones de los estudiantes para realizar una clasificación de su rendimiento académico.

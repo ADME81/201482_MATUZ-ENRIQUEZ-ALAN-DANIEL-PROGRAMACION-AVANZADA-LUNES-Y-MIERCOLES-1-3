@@ -1,0 +1,274 @@
+---
+title: "Aplicación de Naive Bayes en R"
+author: "Gerardo y Alan"
+date: "2026-09-03"
+output: html_document
+---
+
+# Introducción
+
+Naive Bayes es un algoritmo de clasificación basado en el Teorema de Bayes. 
+Su objetivo es calcular la probabilidad de que una observación pertenezca a una clase determinada a partir de sus características.
+
+En esta actividad se aplicará el algoritmo Naive Bayes al conjunto de datos Iris utilizando el lenguaje R y el paquete `e1071`.
+
+# Conjunto de datos Iris
+
+El conjunto de datos Iris contiene 150 observaciones pertenecientes a tres especies:
+
+- Setosa
+- Versicolor
+- Virginica
+
+Cada observación contiene cuatro características:
+
+- Longitud del sépalo
+- Ancho del sépalo
+- Longitud del pétalo
+- Ancho del pétalo
+
+```{r}
+data(iris)
+
+head(iris)
+```
+
+# Exploración de los datos
+
+Podemos observar la estructura del conjunto de datos mediante:
+
+```{r}
+str(iris)
+```
+
+También podemos conocer cuántas observaciones existen de cada especie:
+
+```{r}
+table(iris$Species)
+```
+
+# Instalación de paquetes
+
+Para realizar la actividad se utilizan los paquetes `e1071`, `caret` y `ggplot2`.
+
+La instalación solo debe realizarse una vez.
+
+```{r eval=FALSE}
+install.packages("e1071")
+install.packages("caret")
+install.packages("ggplot2")
+```
+
+Posteriormente se cargan los paquetes:
+
+```{r}
+library(e1071)
+library(caret)
+library(ggplot2)
+```
+
+# División del conjunto de datos
+
+Para evaluar correctamente el modelo, el conjunto Iris se divide en dos partes:
+
+- 70 % de los datos para entrenamiento.
+- 30 % de los datos para prueba.
+
+Se utiliza una semilla para que la división pueda reproducirse posteriormente.
+
+```{r}
+set.seed(123)
+
+train_index <- createDataPartition(
+  iris$Species,
+  p = 0.7,
+  list = FALSE
+)
+
+train_data <- iris[train_index, ]
+
+test_data <- iris[-train_index, ]
+```
+
+Se pueden comprobar las dimensiones de ambos conjuntos:
+
+```{r}
+dim(train_data)
+dim(test_data)
+```
+
+# Datos de entrenamiento
+
+El conjunto de entrenamiento contiene las observaciones que utilizará el algoritmo para aprender las características de cada especie.
+
+```{r}
+head(train_data)
+```
+
+# Datos de prueba
+
+El conjunto de prueba contiene observaciones que no son utilizadas durante el entrenamiento del modelo.
+
+Estas observaciones se utilizan para comprobar qué tan bien puede clasificar el algoritmo datos que no utilizó durante el entrenamiento.
+
+```{r}
+head(test_data)
+```
+
+# Creación del modelo Naive Bayes
+
+Se construye el clasificador utilizando la función `naiveBayes` del paquete `e1071`.
+
+```{r}
+modelo_nb <- naiveBayes(
+  Species ~ .,
+  data = train_data
+)
+
+modelo_nb
+```
+
+La expresión:
+
+`Species ~ .`
+
+indica que la variable `Species` es la clase que se desea predecir.
+
+El punto indica que se utilizan todas las demás variables como características predictoras:
+
+- Sepal.Length
+- Sepal.Width
+- Petal.Length
+- Petal.Width
+
+# Predicciones sobre los datos de prueba
+
+Una vez entrenado el modelo, se utilizan las observaciones del conjunto de prueba para realizar predicciones.
+
+```{r}
+predicciones <- predict(
+  modelo_nb,
+  test_data
+)
+
+predicciones
+```
+
+# Comparación de valores reales y predichos
+
+Para facilitar la interpretación de los resultados se crea una tabla con la clase real y la clase obtenida por el clasificador.
+
+```{r}
+resultado <- data.frame(
+  Real = test_data$Species,
+  Prediccion = predicciones
+)
+
+resultado
+```
+
+# Matriz de confusión
+
+La matriz de confusión permite comparar las predicciones realizadas por Naive Bayes con las clases reales.
+
+```{r}
+matriz <- confusionMatrix(
+  predicciones,
+  test_data$Species
+)
+
+matriz
+```
+
+Los valores ubicados en la diagonal principal representan observaciones clasificadas correctamente.
+
+Los valores fuera de la diagonal representan errores de clasificación.
+
+# Exactitud del modelo
+
+Podemos obtener directamente la exactitud calculada por la matriz de confusión.
+
+```{r}
+matriz$overall["Accuracy"]
+```
+
+También podemos expresarla como porcentaje:
+
+```{r}
+matriz$overall["Accuracy"] * 100
+```
+
+# Predicción de nuevas observaciones
+
+El archivo de ejemplo también propone clasificar tres observaciones nuevas.
+
+Se construye un nuevo conjunto de datos con las características de tres flores.
+
+```{r}
+nuevos_datos <- data.frame(
+  Sepal.Length = c(5.1, 6.7, 5.8),
+  Sepal.Width = c(3.5, 3.0, 2.7),
+  Petal.Length = c(1.4, 5.2, 4.2),
+  Petal.Width = c(0.2, 2.3, 1.3)
+)
+
+nuevos_datos
+```
+
+# Clasificación de las nuevas observaciones
+
+Se utiliza el modelo entrenado para determinar la especie correspondiente a cada nueva observación.
+
+```{r}
+nuevas_predicciones <- predict(
+  modelo_nb,
+  nuevos_datos
+)
+
+nuevas_predicciones
+```
+
+# Probabilidades de clasificación
+
+Naive Bayes también permite observar la probabilidad calculada para cada una de las posibles clases.
+
+Para ello se utiliza el argumento:
+
+`type = "raw"`
+
+```{r}
+probabilidades <- predict(
+  modelo_nb,
+  nuevos_datos,
+  type = "raw"
+)
+
+probabilidades
+```
+
+La clase con la probabilidad más alta corresponde a la predicción seleccionada por el clasificador.
+
+# Resultados de las nuevas observaciones
+
+Podemos combinar las observaciones con la especie predicha.
+
+```{r}
+resultado_nuevos <- data.frame(
+  nuevos_datos,
+  Prediccion = nuevas_predicciones
+)
+
+resultado_nuevos
+```
+
+# Conclusión
+
+En esta actividad se aplicó el algoritmo Naive Bayes al conjunto de datos Iris utilizando R.
+
+El conjunto de datos fue dividido en un 70 % para entrenamiento y un 30 % para prueba. El modelo fue entrenado utilizando las características de longitud y ancho del sépalo y del pétalo para predecir la especie de cada flor.
+
+Posteriormente, las predicciones obtenidas sobre el conjunto de prueba fueron comparadas con los valores reales mediante una matriz de confusión, lo que permitió evaluar el desempeño del clasificador.
+
+También se utilizaron tres observaciones nuevas para comprobar el funcionamiento del modelo. Para estas observaciones se obtuvo tanto la especie predicha como las probabilidades calculadas por Naive Bayes para cada una de las tres especies.
+
+Los resultados muestran cómo Naive Bayes puede ser utilizado para resolver problemas de clasificación utilizando probabilidades obtenidas a partir de las características de los datos.
