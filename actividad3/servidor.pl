@@ -1,6 +1,6 @@
 /*
    Tarea 3 - Servidor REST en Prolog
-   Materia: Inteligencia Artificial / Sistemas Expertos
+   Materia:programacion avanzada  
    FCI - UNACAR
 
    Integrantes:
